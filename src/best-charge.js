@@ -38,7 +38,25 @@ let getTotalPriceNormalPromotion =(inputs)=>{
   }
   return cnt;
 }
+let getTotalPriceHalfPromotion=(inputs)=>{
+  let cnt=0;
+  for(var i in inputs){
+    for(var j in items){
+      let arr=inputs[i].split(' x ');
+      if(arr[0]===items[j].id){
+        if(isHalfPromotion(arr[0])){
+          cnt+=items[j].price/2*parseFloat(arr[1]);
+        }
+        else {
+          cnt+=items[j].price*parseFloat(arr[1]);
+        }
+      }
+    }
 
+  }
+
+  return cnt;
+}
 function bestCharge(selectedItems) {
   return /*TODO*/;
 }
@@ -46,4 +64,5 @@ module.exports = {
   isHalfPromotion,
   getTotalPriceNoPromotion,
   getTotalPriceNormalPromotion,
+  getTotalPriceHalfPromotion,
 };
