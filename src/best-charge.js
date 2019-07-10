@@ -21,6 +21,23 @@ let getTotalPriceNoPromotion = (inputs) =>{
   }
   return cnt;
 }
+let getTotalPriceNormalPromotion =(inputs)=>{
+  let cnt=0;
+  for(var i in inputs){
+    for(var j in items){
+      let arr=inputs[i].split(' x ');
+      if(arr[0]===items[j].id){
+        cnt+=items[j].price*parseFloat(arr[1]);
+      }
+
+    }
+
+  }
+  if(cnt>=30){
+    cnt-=6;
+  }
+  return cnt;
+}
 
 function bestCharge(selectedItems) {
   return /*TODO*/;
@@ -28,4 +45,5 @@ function bestCharge(selectedItems) {
 module.exports = {
   isHalfPromotion,
   getTotalPriceNoPromotion,
+  getTotalPriceNormalPromotion,
 };
