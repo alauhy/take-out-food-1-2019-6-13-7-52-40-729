@@ -57,6 +57,20 @@ let getTotalPriceHalfPromotion=(inputs)=>{
 
   return cnt;
 }
+let choosePromotion=(inputs)=>{
+  let totalHalf=getTotalPriceHalfPromotion(inputs);
+  let totalNormal=getTotalPriceNormalPromotion(inputs);
+  let totalPrice=getTotalPriceNoPromotion(inputs);
+  if(totalPrice<30){
+    return "";
+  }
+  else if(totalHalf>=totalNormal){
+    return '使用优惠:\n'+getPromotion[0].type;
+  }
+  else if(totalHalf<totalNormal){
+    return '使用优惠:\n'+getPromotion[1].type;
+  }
+}
 function bestCharge(selectedItems) {
   return /*TODO*/;
 }
@@ -65,4 +79,5 @@ module.exports = {
   getTotalPriceNoPromotion,
   getTotalPriceNormalPromotion,
   getTotalPriceHalfPromotion,
+  choosePromotion,
 };
