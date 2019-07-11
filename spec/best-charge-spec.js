@@ -46,5 +46,18 @@ describe('Take out food', function () {
 ===================================`.trim()
     expect(summary).toEqual(expected)
   });
-
+  it('should generate best charge when no promotion can be used', function() {
+    let inputs = ["ITEM0013 x 10"];
+    let summary = best_charge.bestCharge(inputs).trim();
+    let expected = `
+============= 订餐明细 =============
+肉夹馍 x 10 = 60元
+-----------------------------------
+使用优惠:
+满30减6元，省12元
+-----------------------------------
+总计：48元
+===================================`.trim()
+    expect(summary).toEqual(expected)
+  });
 });
