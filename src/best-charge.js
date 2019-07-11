@@ -34,7 +34,8 @@ let getTotalPriceNormalPromotion = (inputs) => {
 
   }
   if (cnt >= 30) {
-    cnt -= 6;
+
+    cnt -= 6*Math.floor(cnt/30);
   }
   return cnt;
 }
@@ -92,7 +93,7 @@ function bestCharge(selectedItems) {
     let usePromotion=choosePromotion(selectedItems);
     if(usePromotion===1){
       totalPrice=getTotalPriceNormalPromotion(selectedItems);
-      str+='使用优惠:\n'+getPromotion[0].type+'\n'+'-----------------------------------\n';
+      str+='使用优惠:\n'+getPromotion[0].type+'，省'+(totalPriceNoPromotion-totalPrice)+'元\n'+'-----------------------------------\n';
     }
     else if(usePromotion===2){
       totalPrice=getTotalPriceHalfPromotion(selectedItems);
